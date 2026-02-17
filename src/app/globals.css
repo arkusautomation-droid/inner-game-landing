@@ -3,25 +3,95 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0A0A0F;
+  --foreground: #E8E6E3;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 160, 23, 0.3) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(212, 160, 23, 0.3);
+  border-radius: 3px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500;
   }
+
+  .text-gradient-royal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-royal-300 via-gold-400 to-royal-300;
+  }
+
+  .bg-dark-gradient {
+    background: linear-gradient(180deg, #0A0A0F 0%, #0F0F1A 50%, #0A0A0F 100%);
+  }
+
+  .bg-section-alt {
+    background: linear-gradient(180deg, #0F0F1A 0%, #12121F 50%, #0F0F1A 100%);
+  }
+
+  .border-gold-subtle {
+    border-color: rgba(212, 160, 23, 0.2);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 30px rgba(212, 160, 23, 0.15), 0 0 60px rgba(212, 160, 23, 0.05);
+  }
+
+  .glow-gold-strong {
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.3), 0 0 60px rgba(212, 160, 23, 0.15);
+  }
+}
+
+@layer base {
+  ::selection {
+    background: rgba(212, 160, 23, 0.3);
+    color: #fff;
+  }
+}
+
+/* 3D Book transforms */
+.perspective-\[1200px\] {
+  perspective: 1200px;
+}
+
+.rotate-y-\[-20deg\] {
+  --tw-rotate-y: -20deg;
+}
+
+.rotate-x-\[5deg\] {
+  --tw-rotate-x: 5deg;
+}
+
+.hover\:rotate-y-\[-10deg\]:hover {
+  --tw-rotate-y: -10deg;
+}
+
+.transform-gpu.rotate-y-\[-20deg\].rotate-x-\[5deg\] {
+  transform: rotateY(-20deg) rotateX(5deg);
+}
+
+.transform-gpu.rotate-y-\[-20deg\].rotate-x-\[5deg\]:hover {
+  transform: rotateY(-10deg) rotateX(5deg);
 }
